@@ -22,6 +22,9 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8000 # Cổng backend chạy bên trong container
+          env:
+            - name: MONGO_URI
+              value: "mongodb://ReaTiMo:hoangtien123@54.221.183.93:27017/todo?authSource=admin"
 
 ---
 apiVersion: v1
