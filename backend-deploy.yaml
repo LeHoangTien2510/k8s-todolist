@@ -34,5 +34,6 @@ spec:
   ports:
     - protocol: TCP
       port: 8000      # Cổng mà các dịch vụ khác gọi tới dịch vụ này trong cụm
-      targetPort: 8000 # Cổng thực tế của container backend
-  type: ClusterIP # Chỉ mở mạng nội bộ cho Frontend gọi vào
+      targetPort: 8000
+      nodePort: 31000 # Cổng thực tế của container backend
+  type: NodePort # Chỉ mở mạng nội bộ cho Frontend gọi vào
