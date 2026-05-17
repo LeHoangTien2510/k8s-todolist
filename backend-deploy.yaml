@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-backend
+  labels:
+    app: todo-backend
+spec:
+  replicas: 2 # Chạy 2 Pod song song để chịu tải
+  selector:
+    matchLabels:
+      app: todo-backend
+  template:
+    metadata:
+      labels:
+        app: todo-backend
+    spec:
+      imagePullSecrets:
+        - name: harbor-registry-secret # Sử dụng secret vừa tạo ở Bước 1
+      containers:
+        - name: backend
+          image: registry.arutien.top/devops/mern-todo-app-backend:v1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000 # Cổng backend chạy bên trong container
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: todo-backend-service
+spec:
+  selector:
+    app: todo-backend
+  ports:
+    - protocol: TCP
+      port: 8000      # Cổng mà các dịch vụ khác gọi tới dịch vụ này trong cụm
+      targetPort: 8000 # Cổng thực tế của container backend
+  type: ClusterIP # Chỉ mở mạng nội bộ cho Frontend gọi vào
