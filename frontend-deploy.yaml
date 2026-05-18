@@ -18,7 +18,7 @@ spec:
         - name: harbor-registry-secret
       containers:
         - name: frontend
-          image: registry.arutien.top/devops/mern-todo-app-frontend:v1
+          image: registry.arutien.top/devops/mern-todo-app-frontend:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 80 # Nginx bên trong container chạy cổng 80 như cấu hình Dockerfile trước đó

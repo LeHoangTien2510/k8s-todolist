@@ -18,7 +18,7 @@ spec:
         - name: harbor-registry-secret # Sử dụng secret vừa tạo ở Bước 1
       containers:
         - name: backend
-          image: registry.arutien.top/devops/mern-todo-app-backend:v1
+          image: registry.arutien.top/devops/mern-todo-app-backend:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8000 # Cổng backend chạy bên trong container
