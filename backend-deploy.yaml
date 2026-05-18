@@ -28,6 +28,8 @@ spec:
             # --- THÊM BIẾN MÔI TRƯỜNG DƯỚI ĐÂY ---
             - name: PORT
               value: "8000" # Ép code NodeJS nhận và chạy ở cổng 8000
+            - name: JWT_SECRET
+              value: "BI_MAT"
 
 ---
 apiVersion: v1
